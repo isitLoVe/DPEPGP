@@ -1,10 +1,12 @@
 ## Interface: 11200
 ## Title: DPEPGP
-## Author: Falia - De Profundis
-## Notes: De Profundis EP/GP Loot System alpha v2.0b
+## Author: Falia - De Profundis / edit by |cff02bf02Luise|r
+## Notes: De Profundis EP/GP Loot System alpha v2.1b
 ## SavedVariablesPerCharacter: DPEPGP_Saved_Variable, DPEPGP_Saved_IsBroadcasting
+## SavedVariables: DPEPGPExportData
 DPEPGP.xml
 DPEPGPFunctions.lua
 DPEPGPRaid.xml
 DPEPGPLoot.xml
 DPEPGPDecay.xml
+DPEPGPExport.xml

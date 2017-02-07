@@ -230,3 +230,67 @@ function DPEPGP_AddEveryone_OnClick()
 	local baseGP= DPEPGP_AddPlayersInput2:GetText();
 	DPEPGP_AddPlayers(baseEP,baseGP);
 end
+
+function DPEPGP_CheckGuild()
+--check for attunes
+--check for negative values
+--check for under 100 gp
+
+	patternEPGP = "^(%d+)/(%d+)" 
+	patternMC = "+MC"
+	patternBWL = "+BWL"
+	patternOny = "+Ony"
+	patternNaxx = "+Naxx"
+
+	--refresh guild information
+	DPEPGP_flushEPGP();
+	
+	for i = 1, GetNumGuildMembers(true) do
+		local name,rank,rankIndex,level,class,location,ginfo,officerInfo=GetGuildRosterInfo(i)
+		local _, _, ep, gp = string.find(officerInfo, patternEPGP)
+		
+		if not gp then
+			msg = "ERROR: check GP - " .. tostring(name)
+			DPEPGP_Broadcast(msg,"E")
+			DEFAULT_CHAT_FRAME:AddMessage(msg)
+			return
+		end
+		
+		if not ep then
+			msg = "ERROR: check EP - " .. tostring(name)
+			DPEPGP_Broadcast(msg,"E")
+			DEFAULT_CHAT_FRAME:AddMessage(msg)
+			return
+		end
+		
+		--GP lower then 100
+		if tonumber(gp) < 100 then
+			msg = "ERROR: GP lower then 100 - " .. tostring(name)
+			DPEPGP_Broadcast(msg,"E")
+			DEFAULT_CHAT_FRAME:AddMessage(msg)
+			return
+		end
+		
+		--EPGP Syntax
+		if not string.find(officerInfo, patternEPGP) then
+			msg = "ERROR: Syntax EPGP - " .. tostring(name)
+			DPEPGP_Broadcast(msg,"E")
+			DEFAULT_CHAT_FRAME:AddMessage(msg)
+			return
+		end
+		
+		--At least one attunement
+		if not string.find(officerInfo, patternMC) and not string.find(officerInfo, patternBWL) and not string.find(officerInfo, patternOny) and not string.find(officerInfo, patternNaxx)  then
+			msg = "ERROR: check attunements - " .. tostring(name)
+			DPEPGP_Broadcast(msg,"E")
+			DEFAULT_CHAT_FRAME:AddMessage(msg)
+			return
+		end
+		
+	end
+	
+	--if it gets this far everything is ok
+	msg = "EPGP Guild check complete - no errors found"
+	DPEPGP_Broadcast(msg,"C")
+	--DEFAULT_CHAT_FRAME:AddMessage(msg)
+end
