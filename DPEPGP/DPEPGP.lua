@@ -119,6 +119,10 @@ function DPEPGP_Check_OnClick()
 	DPEPGP_CheckGuild()
 end
 
+function DPEPGP_Export_OnClick()
+	DPEPGP_exportData()
+end
+
 function DPEPGP_Get_Player_Guild_Info()
 -- Doing this on every form open because it didnt work in "variables Loaded" - sigh
 -- Get Player information

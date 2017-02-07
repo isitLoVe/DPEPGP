@@ -33,6 +33,6 @@ function DPEPGP_exportData()
 		
 	ShowUIPanel(DPEPGP_ExportRaidFrame, 1)
 	
-	DEFAULT_CHAT_FRAME:AddMessage("EP GP exported to WTF\\Account\\ACCOUNTNAME\\SavedVariables\\DPEPGPExportData.lua", 1, 1, 0)
+	DEFAULT_CHAT_FRAME:AddMessage("EP GP exported to WTF\\Account\\ACCOUNTNAME\\SavedVariables\\DPEPGP.lua", 1, 1, 0)
 	DEFAULT_CHAT_FRAME:AddMessage("Reload UI or Logout to save the file", 1, 1, 0)
 end 

@@ -4,7 +4,7 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
 
 <Frame name="DPEPGPFrame" toplevel="false" enableMouse="true" movable="true" parent="UIParent">
   <Size>
-    <AbsDimension x="235" y="30"/>
+    <AbsDimension x="290" y="30"/>
   </Size>
   <Anchors>
     <Anchor point="TOP"/>
@@ -56,6 +56,15 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
       <Scripts>
         <OnClick>
           DPEPGP_Check_OnClick();
+        </OnClick>
+      </Scripts>
+    </Button>
+	
+    <Button name="DPEPGP_Export" inherits="GameMenuButtonTemplate" text="Export">
+      <size x="50" y="20"/><Anchors><Anchor point="TOPLEFT"><Offset x="230" y="-5"/></Anchor></Anchors>
+      <Scripts>
+        <OnClick>
+          DPEPGP_Export_OnClick();
         </OnClick>
       </Scripts>
     </Button>
