@@ -51,6 +51,10 @@ function DPEPGP_Slash(msg)
 			DPEPGPFrame:Hide();
 			DPEPGP_Main_Show = false;
 		end
+	elseif msg == "export" then
+		DPEPGP_exportData()
+	elseif msg == "check" then
+		DPEPGP_CheckGuild()
 	else
 		DEFAULT_CHAT_FRAME:AddMessage("usage: /epgp - to show/hide main form")
     end
@@ -109,6 +113,10 @@ function DPEPGP_Decay_OnClick()
 	DPEPGP_Decay_EPValue:SetText(""); -- Ep Decay %
 	DPEPGP_Decay_GPValue:SetText(""); -- GP Decay %
 	DPEPGPDecayFrame:Show();
+end
+
+function DPEPGP_Check_OnClick()
+	DPEPGP_CheckGuild()
 end
 
 function DPEPGP_Get_Player_Guild_Info()
