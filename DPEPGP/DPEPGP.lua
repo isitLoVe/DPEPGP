@@ -120,7 +120,11 @@ function DPEPGP_Check_OnClick()
 end
 
 function DPEPGP_Export_OnClick()
-	DPEPGP_exportData()
+	if IsControlKeyDown() then 
+		DPEPGP_exportDataRatio()
+	else
+		DPEPGP_exportData()
+	end
 end
 
 function DPEPGP_Get_Player_Guild_Info()
