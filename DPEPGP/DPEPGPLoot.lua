@@ -193,22 +193,27 @@ function DPEPGP_Validate_OnClick()
 end
 
 function DPEPGP_Convert_Rank(level)
--- Current Rank Levels 
--- 0/Guild Leader(M)
--- 1/Vice Leader(M)
--- 2/Officer(M)
--- 3/Class Officer(M) 
--- 4/Officer Alt(@)
--- 5/Member(M)
--- 6/Casual(C)
--- 7/Alt(@)
--- 8/Aspirant(A)
+-- Current Rank Levels  - updated 26.03.2017
+-- 0/Guild Leader (C)
+-- 1/Raid Officer (C)
+-- 2/Officer (C)
+-- 3/Officer Alt (@)
+-- 4/Core (C)
+-- 5/Member (M)
+-- 6/Casual (©)
+-- 7/Alt (@)
+-- 8/Aspirant (A)
+
 	if level == 8 then 
 		return "(A)";
-	elseif level == 7 or level == 4 then
+	elseif level == 7 or level == 3 then
 		return "(@)";
 	elseif level == 6 then
+		return "(©)";
+	elseif level == 4 or level == 2 or level == 1 or level == 0 then
 		return "(C)";
+	elseif level == 5 then
+		return "(M)";
 	else
 		return "(M)";
 	end
