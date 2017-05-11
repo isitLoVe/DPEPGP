@@ -15,6 +15,7 @@ function DPEPGP_OnLoad()
 --	this:RegisterEvent("CHAT_MSG_YELL");
 --	this:RegisterEvent("CHAT_MSG_LOOT");
 	this:RegisterEvent("CHAT_MSG_SYSTEM");
+	this:RegisterEvent("CHAT_MSG_RAID_WARNING");
 --	this:RegisterEvent("LOOT_OPENED");
 	SlashCmdList["DPEPGP"] = DPEPGP_Slash;
 	SLASH_DPEPGP1 = "/epgp";
@@ -24,7 +25,6 @@ end
 
 function DPEPGP_Slash(msg)
 	DPEPGP_Get_Player_Guild_Info();
-    DEFAULT_CHAT_FRAME:AddMessage("DPEPGP: "..DPEPGP_Player_Name.."-"..DPEPGP_Guild_Name.."-"..DPEPGP_Player_Rank)
     local playerRank = tonumber(DPEPGP_Player_Rank);
 	if (playerRank == 0 or playerRank == 1) then -- Guild Leader or Vice Leader
 		DPEPGP_Raid:Enable();
@@ -44,6 +44,7 @@ function DPEPGP_Slash(msg)
 		DPEPGP_Decay:Disable();
 	end		
 	if msg == "" then
+		DEFAULT_CHAT_FRAME:AddMessage("DPEPGP: "..DPEPGP_Player_Name.."-"..DPEPGP_Guild_Name.."-"..DPEPGP_Player_Rank)
 		if DPEPGP_Main_Show == false then
 			DPEPGPFrame:Show();
 			DPEPGP_Main_Show = true;		
@@ -55,7 +56,12 @@ function DPEPGP_Slash(msg)
 		DPEPGP_exportData()
 	elseif msg == "check" then
 		DPEPGP_CheckGuild()
+	elseif string.find(msg, "loot") then
+		local _, _, item = string.find(msg, "loot (.+)")
+		DPEPGP_DistributeLoot(item)
+		DPEPGP_Loot_OnClick()
 	else
+		DEFAULT_CHAT_FRAME:AddMessage("DPEPGP: "..DPEPGP_Player_Name.."-"..DPEPGP_Guild_Name.."-"..DPEPGP_Player_Rank)
 		DEFAULT_CHAT_FRAME:AddMessage("usage: /epgp - to show/hide main form")
     end
 end
@@ -85,6 +91,13 @@ function DPEPGP_OnEvent(event)
 		end
 	elseif (event == "LOOT_OPENED") then
 		DEFAULT_CHAT_FRAME:AddMessage("DPEPGP Loot Opened");
+	elseif (event == "CHAT_MSG_RAID_WARNING") then
+--		DEFAULT_CHAT_FRAME:AddMessage("DPEPGP Raid Warning");
+		local msg = arg1;
+		if string.find(msg,"^roll") then
+			local _, _, item = string.find(msg, "roll (.+)")
+			DPEPGP_DistributeLoot(item)
+		end
 	end
 end
 

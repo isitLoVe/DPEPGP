@@ -10,3 +10,4 @@ DPEPGPRaid.xml
 DPEPGPLoot.xml
 DPEPGPDecay.xml
 DPEPGPExport.xml
+DPEPGPValues.lua

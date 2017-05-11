@@ -102,7 +102,7 @@ function DPEPGP_exportDataRanks()
 	table.sort(EPGPexportDataDB, function(a,b) return a.ratio > b.ratio end)
 		
 	for i in EPGPexportDataDB do
-		EPGPexportDataFrame = EPGPexportDataFrame .. EPGPexportDataDB[i].name .. ": " .. EPGPexportDataDB[i].rank .. " - " .. EPGPexportDataDB[i].rankIndex .. "\r\n"
+		EPGPexportDataFrame = EPGPexportDataFrame .. EPGPexportDataDB[i].name .. ";" .. EPGPexportDataDB[i].rank .. ";" .. EPGPexportDataDB[i].rankIndex .. "\r\n"
 	end
 	
 	DPEPGP_ExportRaidFrameEditBox1:SetFont("Fonts\\FRIZQT__.TTF", "8")
@@ -116,3 +116,4 @@ function DPEPGP_exportDataRanks()
 	DEFAULT_CHAT_FRAME:AddMessage("EP GP exported to WTF\\Account\\ACCOUNTNAME\\SavedVariables\\DPEPGP.lua", 1, 1, 0)
 	DEFAULT_CHAT_FRAME:AddMessage("Reload UI or Logout to save the file", 1, 1, 0)
 end 
+

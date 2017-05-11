@@ -86,7 +86,7 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
           </Scripts>
         </Button>
 	<Button name="DPEPGP_Validate_Button" inherits="GameMenuButtonTemplate" text="Validate All Names">
-	  <size x="175" y="25"/><Anchors><Anchor point="BOTTOMLEFT"><Offset x="100" y="10"/></Anchor></Anchors>
+	  <size x="175" y="25"/><Anchors><Anchor point="BOTTOMRIGHT"><Offset x="-190" y="10"/></Anchor></Anchors>
           <Scripts>
             <OnClick>
               DPEPGP_Validate_OnClick();
@@ -94,18 +94,26 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
           </Scripts>
         </Button>
 	<Button name="DPEPGP_Broadcast_Button" inherits="GameMenuButtonTemplate" text="Broadcast Ratios">
-	  <size x="175" y="25"/><Anchors><Anchor point="BOTTOMRIGHT"><Offset x="-100" y="10"/></Anchor></Anchors>
+	  <size x="175" y="25"/><Anchors><Anchor point="BOTTOMRIGHT"><Offset x="-10" y="10"/></Anchor></Anchors>
           <Scripts>
             <OnClick>
               DPEPGP_Broadcast_OnClick();
             </OnClick>
           </Scripts>
         </Button>
-	<Button name="DPEPGP_ThreeTwoOne" inherits="GameMenuButtonTemplate" text="..3..2..1..">
-	  <size x="75" y="25"/><Anchors><Anchor point="BOTTOMRIGHT"><Offset x="-10" y="10"/></Anchor></Anchors>
+	<Button name="DPEPGP_ThreeTwoOne" inherits="GameMenuButtonTemplate" text="3-2-1">
+	  <size x="60" y="25"/><Anchors><Anchor point="BOTTOMLEFT"><Offset x="160" y="10"/></Anchor></Anchors>
           <Scripts>
             <OnClick>
               DPEPGP_ThreeTwoOne_OnClick();
+            </OnClick>
+          </Scripts>
+        </Button>
+	<Button name="DPEPGP_AllInOne" inherits="GameMenuButtonTemplate" text="All-In-One">
+	  <size x="75" y="25"/><Anchors><Anchor point="BOTTOMLEFT"><Offset x="85" y="10"/></Anchor></Anchors>
+          <Scripts>
+            <OnClick>
+              DPEPGP_AllInOne_OnClick();
             </OnClick>
           </Scripts>
         </Button>

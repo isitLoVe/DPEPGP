@@ -223,8 +223,12 @@ function DPEPGP_Broadcast_OnClick()
 --	DEFAULT_CHAT_FRAME:AddMessage("DPEPGPL Loot Broadcast");
 --  goodNameList will contain all valid guild members
 --  Just call Falia's code using this
-	DPEPGP_BestRatio_OnClick(goodNameList);
-	DPEPGP_PlayerLootNames:SetText(""); -- clear Name List
+	if goodNameList == "" then
+		SendChatMessage("No one rolled!" ,"RAID_WARNING", nil)
+	else
+		DPEPGP_BestRatio_OnClick(goodNameList);
+		DPEPGP_PlayerLootNames:SetText(""); -- clear Name List
+	end
 end
 
 --function DPEPGP_BestRatio_OnClick()
@@ -307,4 +311,47 @@ function DPEPGP_GetRank(searchName)
 		end
 	end
 	return "(X)","Noob";	
+end
+
+function DPEPGP_DistributeLoot(item)
+	if not item then 
+		SendChatMessage("Roll for the item. You have 10 seconds!" ,"RAID_WARNING", nil)
+	else
+		local _, _, itemid = string.find(item, "item:(%d+)")
+		DEFAULT_CHAT_FRAME:AddMessage(tostring(itemid))
+		if itemid then
+			price = DPEPGP_GetCosts(itemid)
+			SendChatMessage("Roll for "..item.. " - Price: ".. price .." GP. You have 10 seconds!" ,"RAID_WARNING", nil)
+		else
+			SendChatMessage("Roll for "..item.. ". You have 10 seconds!" ,"RAID_WARNING", nil)
+		end
+	end
+	DPEPGP_AutoRoll_OnClick()
+end
+
+function DPEPGP_AllInOne_OnClick()
+	DPEPGP_ThreeTwoOne_OnClick()
+	DPEPGP_Validate_OnClick()
+	DPEPGP_Broadcast_OnClick()
+end
+
+function DPEPGP_GetCosts(itemid)
+
+	if guildName == "De Profundis" then
+		CostDB = DeProfundis_GP_Values
+	elseif guildName == "Discordia" then
+		CostDB = Discordia_GP_Values
+	else
+		CostDB = DeProfundis_GP_Values
+	end
+
+	if CostDB and itemid then
+		for k, v in pairs(CostDB) do
+			if k == "Item"..itemid then
+				return v
+			end
+		end
+	end
+	
+	return 0
 end
