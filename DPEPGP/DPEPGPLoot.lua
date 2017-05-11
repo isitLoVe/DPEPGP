@@ -27,6 +27,7 @@ function DPEPGP_AutoRoll_OnClick()
 	DPEPGP_PlayerLootNames:SetText("");
 	checkForLootRolls = true;
 	playerLootRolls = {};
+	
 	DPEPGP_Broadcast("DPEPGPL Loot Checking for /ROLL","C");
 end
 
@@ -225,6 +226,7 @@ function DPEPGP_Broadcast_OnClick()
 --  Just call Falia's code using this
 	if goodNameList == "" then
 		SendChatMessage("No one rolled!" ,"RAID_WARNING", nil)
+		DPEPGP_PlayerLootNames:SetText(""); -- clear Name List
 	else
 		DPEPGP_BestRatio_OnClick(goodNameList);
 		DPEPGP_PlayerLootNames:SetText(""); -- clear Name List
@@ -314,6 +316,7 @@ function DPEPGP_GetRank(searchName)
 end
 
 function DPEPGP_DistributeLoot(item)
+	goodNameList = ""
 	if not item then 
 		SendChatMessage("Roll for the item. You have 10 seconds!" ,"RAID_WARNING", nil)
 	else
