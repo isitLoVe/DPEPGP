@@ -5,6 +5,9 @@ newNameList = ""; -- used to redisplay all names in Input Line
 goodNameList = ""; -- used to get ratios for broadcast
 badNameList = ""; -- used to show bad names
 
+--ACE2
+DPEPGPLoot = AceLibrary("AceAddon-2.0"):new("AceConsole-2.0", "AceEvent-2.0")
+
 -- On Load - Register for Drag
 function DPEPGP_Loot_OnLoad()
 	this:RegisterForDrag("LeftButton");
@@ -330,12 +333,20 @@ function DPEPGP_DistributeLoot(item)
 		end
 	end
 	DPEPGP_AutoRoll_OnClick()
-end
+	DPEPGPLoot:ScheduleEvent(DPEPGP_5sec, 5)
+	DPEPGPLoot:ScheduleEvent(DPEPGP_ThreeTwoOne_OnClick, 11)
+	DPEPGPLoot:ScheduleEvent(DPEPGP_Validate_OnClick, 12)
+	DPEPGPLoot:ScheduleEvent(DPEPGP_Broadcast_OnClick, 13)
+	end
 
 function DPEPGP_AllInOne_OnClick()
 	DPEPGP_ThreeTwoOne_OnClick()
 	DPEPGP_Validate_OnClick()
-	DPEPGP_Broadcast_OnClick()
+	DPEPGP_Broadcast_OnClick()()
+end
+
+function DPEPGP_5sec()
+	SendChatMessage("5 seconds for rolls remaining!" ,"RAID_WARNING", nil)
 end
 
 function DPEPGP_GetCosts(itemid)
