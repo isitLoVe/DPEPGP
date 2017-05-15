@@ -369,3 +369,15 @@ function DPEPGP_GetCosts(itemid)
 	
 	return 0
 end
+
+--Hook into Blizzard LootFrame
+local origLootFrameItem_OnClick = LootFrameItem_OnClick
+LootFrameItem_OnClick = function(button)
+
+	if ( IsAltKeyDown() ) then
+		return DPEPGP_DistributeLoot(GetLootSlotLink(this.slot))
+	else
+		return origLootFrameItem_OnClick(button)
+	end
+
+end

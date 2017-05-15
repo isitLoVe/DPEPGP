@@ -1,5 +1,10 @@
 DeProfundis_GP_Values = {
 	-----------------
+	--- Testing ---
+	-----------------
+Item769 = "9999"; --Chunk of Boar Meat
+
+	-----------------
 	--- Naxxramas ---
 	-----------------
 Item23226 = "104"; --Ghoul Skin Tunic
