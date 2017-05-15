@@ -15,7 +15,6 @@ function DPEPGP_OnLoad()
 --	this:RegisterEvent("CHAT_MSG_YELL");
 --	this:RegisterEvent("CHAT_MSG_LOOT");
 	this:RegisterEvent("CHAT_MSG_SYSTEM");
-	this:RegisterEvent("CHAT_MSG_RAID_WARNING");
 --	this:RegisterEvent("LOOT_OPENED");
 	SlashCmdList["DPEPGP"] = DPEPGP_Slash;
 	SLASH_DPEPGP1 = "/epgp";
@@ -91,13 +90,6 @@ function DPEPGP_OnEvent(event)
 		end
 	elseif (event == "LOOT_OPENED") then
 		DEFAULT_CHAT_FRAME:AddMessage("DPEPGP Loot Opened");
-	elseif (event == "CHAT_MSG_RAID_WARNING") then
---		DEFAULT_CHAT_FRAME:AddMessage("DPEPGP Raid Warning");
-		local msg = arg1;
-		if string.find(msg,"^roll") then
-			local _, _, item = string.find(msg, "roll (.+)")
-			DPEPGP_DistributeLoot(item)
-		end
 	end
 end
 
