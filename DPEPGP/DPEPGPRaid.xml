@@ -157,6 +157,12 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
 	<EditBox name="DPEPGP_PlayerName" inherits="InputBoxTemplate" autoFocus="false">
           <Size><AbsDimension x="160" y="20"/></Size>
           <Anchors><Anchor point="TOPLEFT"><Offset x="175" y="-8"/></Anchor></Anchors>
+			<Scripts>
+            <OnEditFocusGained>
+              DPEPGP_PlayerName_OnEditFocusGained();
+            </OnEditFocusGained>
+          </Scripts>
+
         </EditBox>
 	<EditBox name="DPEPGP_PlayerEP" inherits="InputBoxTemplate" autoFocus="false">
           <Size><AbsDimension x="50" y="20"/></Size>

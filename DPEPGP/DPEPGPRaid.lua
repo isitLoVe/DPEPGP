@@ -53,6 +53,7 @@ function DPEPGP_AddEPToAllOnlineInRaid(amount)
 	local i=1;
 	while i<=GetNumRaidMembers() do
 		if DPEPGP_IsInGuild(GetUnitName("raid"..i)) then
+			--DPEPGP_Broadcast(amount.." EP added to: "..GetUnitName("raid"..i) .. " ID: " .. i,"C");
 			DPEPGP_AddEPTo(GetUnitName("raid"..i), amount);
 		else 
 			DPEPGP_Broadcast(GetUnitName("raid"..i).." is not in Guild, ignoring!","C");
@@ -189,4 +190,11 @@ function DPEPGP_ResetPlayer_OnClick(player, baseEP, baseGP)
 	local msg = player .. " has been reset. " .. player .. " now has " .. baseEP .. "/" .. baseGP .. " EP/GP"
 	msg = msg ..", and his/her ratio is " .. baseEP/baseGP.." "..optMsg;
 	DPEPGP_Broadcast(msg,"R");
+end
+
+function DPEPGP_PlayerName_OnEditFocusGained()
+	local name = UnitName("target")
+	if name then
+		DPEPGP_PlayerName:SetText(tostring(name))
+	end
 end
