@@ -327,16 +327,16 @@ function DPEPGP_DistributeLoot(item)
 		DEFAULT_CHAT_FRAME:AddMessage(tostring(itemid))
 		if itemid then
 			price = DPEPGP_GetCosts(itemid)
-			SendChatMessage("Roll for "..item.. " - Price: ".. price .." GP. You have 10 seconds!" ,"RAID_WARNING", nil)
+			SendChatMessage("Roll for "..item.. " - Price: ".. price .." GP. You have 15 seconds!" ,"RAID_WARNING", nil)
 		else
 			SendChatMessage("Roll for "..item.. ". You have 10 seconds!" ,"RAID_WARNING", nil)
 		end
 	end
 	DPEPGP_AutoRoll_OnClick()
-	DPEPGPLoot:ScheduleEvent(DPEPGP_5sec, 5)
-	DPEPGPLoot:ScheduleEvent(DPEPGP_ThreeTwoOne_OnClick, 11)
-	DPEPGPLoot:ScheduleEvent(DPEPGP_Validate_OnClick, 12)
-	DPEPGPLoot:ScheduleEvent(DPEPGP_Broadcast_OnClick, 13)
+	DPEPGPLoot:ScheduleEvent(DPEPGP_5sec, 10)
+	DPEPGPLoot:ScheduleEvent(DPEPGP_ThreeTwoOne_OnClick, 16)
+	DPEPGPLoot:ScheduleEvent(DPEPGP_Validate_OnClick, 17)
+	DPEPGPLoot:ScheduleEvent(DPEPGP_Broadcast_OnClick, 18)
 	end
 
 function DPEPGP_AllInOne_OnClick()
