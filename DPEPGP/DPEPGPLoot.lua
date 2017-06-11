@@ -331,6 +331,16 @@ function DPEPGP_DistributeLoot(item)
 		else
 			SendChatMessage("Roll for "..item.. ". You have 10 seconds!" ,"RAID_WARNING", nil)
 		end
+		
+		DPEPGP_Get_Player_Guild_Info();
+		local playerRank = tonumber(DPEPGP_Player_Rank);
+		if (playerRank == 0 or playerRank == 1 or playerRank == 2 or playerRank == 3 or playerRank == 4) then
+			DPEPGP_PlayerGP:SetText(tostring(price))
+			DPEPGP_PlayerMessage:SetText(tostring(item))
+			DPEPGP_Get_Player_Guild_Info()
+			DPEPGPRaidFrame:Show()
+		end
+
 	end
 	DPEPGP_AutoRoll_OnClick()
 	DPEPGPLoot:ScheduleEvent(DPEPGP_5sec, 10)

@@ -100,6 +100,7 @@ function DPEPGP_Raid_OnClick()
 	DPEPGP_PlayerName:SetText(""); -- Single Player Name
 	DPEPGP_PlayerEP:SetText(""); -- Single Player EP
 	DPEPGP_PlayerGP:SetText(""); -- Single Player GP
+	DPEPGP_PlayerMessage:SetText("")  -- Single Player Message
 	DPEPGP_Get_Player_Guild_Info();
 -- Show the frame
 	DPEPGPRaidFrame:Show();
