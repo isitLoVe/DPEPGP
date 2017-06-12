@@ -334,7 +334,7 @@ function DPEPGP_DistributeLoot(item)
 		
 		DPEPGP_Get_Player_Guild_Info();
 		local playerRank = tonumber(DPEPGP_Player_Rank);
-		if (playerRank == 0 or playerRank == 1 or playerRank == 2 or playerRank == 3 or playerRank == 4) then
+		if (playerRank == 0 or playerRank == 1 or playerRank == 2 or playerRank == 3) then
 			DPEPGP_PlayerGP:SetText(tostring(price))
 			DPEPGP_PlayerMessage:SetText(tostring(item))
 			DPEPGP_Get_Player_Guild_Info()
